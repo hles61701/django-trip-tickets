@@ -6,10 +6,10 @@ import requests
 # 票券網站抽象類別
 class Website(ABC):
     def __init__(self, city_name):
-        self.city_name = city_name 
+        self.city_name = city_name  # CityName屬性
     
     @abstractmethod
-    def scrape(self):
+    def scrape(self): # 爬取票券抽象方法
         pass
 
 
@@ -19,6 +19,8 @@ class Kkday(Website):
         result = [] # 結果回傳
 
         if self.city_name:
+
+            # 取得傳入城市的所有一日遊票券
             response = requests.get(
                 f'https://www.kkday.com/zh-tw/product/ajax_productlist/?country=&city=&keyword={self.city_name}'
             )
@@ -30,10 +32,19 @@ class Kkday(Website):
             activities = response.json()['data']
 
             for activity in activities:
-                title = activity['name']
+                # 票券名稱
+                title = activiy['name']
+
+                # 票券連結
                 link = activity['url']
+
+                # 票券價格
                 price = int(activity['price'])
+
+                # 最早可使用日期
                 booking_date = datetime.strftime(datetime.strptime(activity['earliest_sale_date'], "%Y%m%d"),'%Y-%m-%d')
+                
+                # 評價
                 star = activity['rating_star']
 
                 result.append(
