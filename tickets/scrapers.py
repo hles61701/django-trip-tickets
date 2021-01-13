@@ -33,7 +33,7 @@ class Kkday(Website):
 
             for activity in activities:
                 # 票券名稱
-                title = activiy['name']
+                title = activity['name']
 
                 # 票券連結
                 link = activity['url']
