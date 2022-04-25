@@ -1,6 +1,5 @@
 # Django-trip-tickets
-## 網站連結
-https://django-shopee.herokuapp.com/shopee/
+
 ## 專案介紹
 此專案使用的是django框架，透過輸入城市名稱，利用python網頁爬蟲爬取kkday和klook網站爬取一日旅遊票券，結合Bootstrap框架來美化前端網頁
 ## 執行畫面
